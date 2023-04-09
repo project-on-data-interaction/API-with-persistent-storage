@@ -13,6 +13,10 @@ const Todo = require("../models/Todo");
 router.get("/", async (req, res) => {
 	//this line will give all the data present in our database
 	const allTodo = await Todo.find();
+	res.set({
+		"Content-Type": "application/json",
+		"Access-Control-Allow-Origin": "*",
+	});
 	res.json(allTodo);
 	//sending all the data that we received from the database to the index
 });

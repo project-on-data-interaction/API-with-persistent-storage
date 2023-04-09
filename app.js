@@ -5,6 +5,8 @@ const express = require("express");
 
 //connect mongoose package to the database
 const mongoose = require("mongoose");
+// This is to solve the cors security issue when running both server and the client apps locally
+const cors = require("cors");
 
 //initialize the app with express model
 const app = express();
@@ -28,6 +30,15 @@ app.use(express.static("public"));
 
 //set the template in engine
 app.set("view engine", "ejs");
+
+// This is to solve the cors security issue when running both server and the client apps locally
+app.use(
+	cors({
+		origin: "*",
+		credentials: true,
+		allowedHeaders: ["Content-Type"],
+	})
+);
 
 //routes
 app.use(require("./routes/index"));
