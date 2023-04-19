@@ -1,6 +1,7 @@
 /** @format */
 /** @format */
 
+/*
 //this will help us to create different routes
 const router =
 	require("express").Router();
@@ -22,4 +23,4 @@ router.get("/", async (req, res) => {
 });
 
 //exporting the router
-module.exports = router;
+module.exports = router; */

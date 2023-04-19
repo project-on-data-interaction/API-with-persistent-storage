@@ -1,5 +1,47 @@
 /** @format */
 
+//creating a new server listening at port 3000
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
+
+// Port
+const port = 3000;
+
+//  setting up the middleware 'body-Parser'.
+app.use(bodyParser.json());
+app.use(
+	bodyParser.urlencoded({
+		extended: true,
+	})
+);
+app.get("/", (req, res) => {
+	res.json({
+		message:
+			"Hello Stranger! How are you?",
+	});
+});
+
+// Listen
+app.listen(port, () => {
+	console.log(
+		`Listening on port: ${port}`
+	);
+});
+/*
+const port = 3000;
+
+app.get("/", (req, res) => {
+	res.send("Is it working?");
+});
+
+app.listen(port, () => {
+	console.log(
+		`Example app listening on port ${port}`
+	);
+});
+
+/*
 //create first basic server
 const express = require("express");
 
@@ -48,16 +90,4 @@ app.listen(3000, () =>
 	console.log(
 		"server started listening on port : 3000"
 	)
-);
-
-/*const port = 3000;
-
-app.get("/", (req, res) => {
-	res.send("Is it working?");
-});
-
-app.listen(port, () => {
-	console.log(
-		`Example app listening on port ${port}`
-	);
-}); */
+); */
