@@ -71,6 +71,32 @@ app.post(
 	}
 );
 
+//Deleting a todo item from the list
+app.delete(
+	"/delete/:id",
+	(request, response) => {
+		console.log(request.params.id);
+		let id = parseInt(
+			request.params.id
+		);
+		{
+			pool.query(
+				"DELETE FROM to_do_list WHERE id = $1",
+				[id],
+				(error, results) => {
+					if (error) {
+						throw error;
+					}
+					response
+						.status(200)
+						.send(
+							`User deleted with ID: ${id}`
+						);
+				}
+			);
+		}
+	}
+);
 // Listen
 app.listen(port, () => {
 	console.log(
