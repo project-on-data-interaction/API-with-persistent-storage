@@ -63,7 +63,7 @@ app.post(
 						throw error;
 					}
 					response
-						.status(201)
+						.status(200)
 						.json(results.rows[0]);
 				}
 			);
@@ -90,7 +90,35 @@ app.delete(
 					response
 						.status(200)
 						.send(
-							`User deleted with ID: ${id}`
+							`To-do activity deleted with ID: ${id}`
+						);
+				}
+			);
+		}
+	}
+);
+
+//update data : mark the completed activities in the to-do list
+app.put(
+	"/completed/:id",
+	(request, response) => {
+		console.log(request.params.id);
+		let id = parseInt(
+			request.params.id
+		);
+		const { completed } = request.body;
+		{
+			pool.query(
+				"UPDATE to_do_list SET completed =  $1 WHERE id = $2",
+				[completed, id],
+				(error, results) => {
+					if (error) {
+						throw error;
+					}
+					response
+						.status(200)
+						.send(
+							`To-do activity marked as completed with ID: ${id}`
 						);
 				}
 			);
