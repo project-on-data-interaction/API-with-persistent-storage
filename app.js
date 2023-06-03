@@ -11,7 +11,7 @@ var cors = require("cors");
 app.use(cors());
 
 // Port
-const port = 3001;
+const port = 3005;
 
 //  setting up the middlewares
 app.use(morgan("common"));
@@ -48,7 +48,7 @@ app.get(
 //Adding a new to-do item to the list
 
 app.post(
-	"/addnew",
+	"/todos",
 	(request, response) => {
 		let data = request.body;
 		{
@@ -73,7 +73,7 @@ app.post(
 
 //Deleting a todo item from the list
 app.delete(
-	"/delete/:id",
+	"/todos/:id",
 	(request, response) => {
 		console.log(request.params.id);
 		let id = parseInt(
@@ -100,7 +100,7 @@ app.delete(
 
 //update data : mark the completed activities in the to-do list
 app.put(
-	"/completed/:id",
+	"/todos/:id",
 	(request, response) => {
 		console.log(request.params.id);
 		let id = parseInt(
