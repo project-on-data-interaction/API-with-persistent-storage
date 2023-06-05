@@ -87,11 +87,12 @@ app.delete(
 					if (error) {
 						throw error;
 					}
+					const message = {
+						message: `To-do activity deleted with ID: ${id}`,
+					};
 					response
 						.status(200)
-						.send(
-							`To-do activity deleted with ID: ${id}`
-						);
+						.json(message);
 				}
 			);
 		}
@@ -115,11 +116,12 @@ app.put(
 					if (error) {
 						throw error;
 					}
+					const message = {
+						message: `To-do activity marked as completed with ID: ${id}`,
+					};
 					response
 						.status(200)
-						.send(
-							`To-do activity marked as completed with ID: ${id}`
-						);
+						.json(message);
 				}
 			);
 		}
